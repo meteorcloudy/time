@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="https://avatars0.githubusercontent.com/u/55999857"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../time/index.html'><div class='logo-container'><img src='https://avatars0.githubusercontent.com/u/55999857' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="https://avatars0.githubusercontent.com/u/55999857"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../time/index.html'><div class='logo-container'><img src='https://avatars0.githubusercontent.com/u/55999857' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><span class="help-button">?</span>
+                <a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -624,6 +625,23 @@
 <span id="624">624</span>
 <span id="625">625</span>
 <span id="626">626</span>
+<span id="627">627</span>
+<span id="628">628</span>
+<span id="629">629</span>
+<span id="630">630</span>
+<span id="631">631</span>
+<span id="632">632</span>
+<span id="633">633</span>
+<span id="634">634</span>
+<span id="635">635</span>
+<span id="636">636</span>
+<span id="637">637</span>
+<span id="638">638</span>
+<span id="639">639</span>
+<span id="640">640</span>
+<span id="641">641</span>
+<span id="642">642</span>
+<span id="643">643</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! Simple time handling.</span>
 <span class="doccomment">//!</span>
@@ -768,7 +786,7 @@
 <span class="doccomment">//! | `0`              | Pad with zeros  | `%0d` =&gt; `05` |</span>
 
 <span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">docs</span>, <span class="ident">feature</span>(<span class="ident">doc_cfg</span>))]</span>
-<span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">std</span>), <span class="ident">no_std</span>)]</span>
+<span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>), <span class="ident">no_std</span>)]</span>
 <span class="attribute">#![<span class="ident">deny</span>(
     <span class="ident">anonymous_parameters</span>,
     <span class="ident">clippy</span>::<span class="ident">all</span>,
@@ -790,12 +808,11 @@
     <span class="ident">clippy</span>::<span class="ident">get_unwrap</span>,
     <span class="ident">clippy</span>::<span class="ident">missing_docs_in_private_items</span>,
     <span class="ident">clippy</span>::<span class="ident">nursery</span>,
-    <span class="ident">clippy</span>::<span class="ident">option_unwrap_used</span>,
     <span class="ident">clippy</span>::<span class="ident">pedantic</span>,
     <span class="ident">clippy</span>::<span class="ident">print_stdout</span>,
-    <span class="ident">clippy</span>::<span class="ident">result_unwrap_used</span>,
     <span class="ident">clippy</span>::<span class="ident">todo</span>,
     <span class="ident">clippy</span>::<span class="ident">unimplemented</span>,
+    <span class="ident">clippy</span>::<span class="ident">unwrap_used</span>,
     <span class="ident">clippy</span>::<span class="ident">use_debug</span>,
     <span class="ident">missing_copy_implementations</span>,
     <span class="ident">missing_debug_implementations</span>,
@@ -822,24 +839,42 @@
     <span class="ident">clippy</span>::<span class="ident">zero_prefixed_literal</span>,
     <span class="ident">unstable_name_collisions</span>
 )]</span>
-<span class="attribute">#![<span class="ident">cfg_attr</span>(<span class="ident">test</span>, <span class="ident">allow</span>(<span class="ident">clippy</span>::<span class="ident">cognitive_complexity</span>, <span class="ident">clippy</span>::<span class="ident">too_many_lines</span>))]</span>
+<span class="attribute">#![<span class="ident">cfg_attr</span>(
+    <span class="ident">test</span>,
+    <span class="ident">allow</span>(
+        <span class="ident">clippy</span>::<span class="ident">cognitive_complexity</span>,
+        <span class="ident">clippy</span>::<span class="ident">similar_names</span>,
+        <span class="ident">clippy</span>::<span class="ident">too_many_lines</span>,
+    )
+)]</span>
 <span class="attribute">#![<span class="ident">doc</span>(<span class="ident">html_favicon_url</span> <span class="op">=</span> <span class="string">&quot;https://avatars0.githubusercontent.com/u/55999857&quot;</span>)]</span>
 <span class="attribute">#![<span class="ident">doc</span>(<span class="ident">html_logo_url</span> <span class="op">=</span> <span class="string">&quot;https://avatars0.githubusercontent.com/u/55999857&quot;</span>)]</span>
 <span class="comment">// Because we have a macro named `time`, this can cause conflicts. MSRV</span>
 <span class="comment">// guarantees that edition 2018 is available.</span>
 <span class="attribute">#![<span class="ident">doc</span>(<span class="ident">test</span>(<span class="ident">no_crate_inject</span>))]</span>
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">panicking_api</span>)]</span>
+<span class="doccomment">/// Unwrap an `Option`, returning if `None`. This is the equivalent to the</span>
+<span class="doccomment">/// question mark operator, but is usable in `const` contexts.</span>
+<span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">try_opt</span> {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">x</span>:<span class="ident">expr</span>) <span class="op">=&gt;</span> {
+        <span class="kw">match</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">x</span> {
+            <span class="prelude-val">Some</span>(<span class="ident">value</span>) <span class="op">=&gt;</span> <span class="ident">value</span>,
+            <span class="prelude-val">None</span> <span class="op">=&gt;</span> <span class="kw">return</span> <span class="prelude-val">None</span>,
+        }
+    };
+}
+
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;panicking-api&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">docs</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;panicking-api&quot;</span>)))]</span>
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">format_conditional</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">conditional</span>:<span class="ident">ident</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">conditional</span>:<span class="ident">ident</span>) <span class="op">=&gt;</span> {
         <span class="macro">format</span><span class="macro">!</span>(<span class="macro">concat</span><span class="macro">!</span>(<span class="macro">stringify</span><span class="macro">!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">conditional</span>), <span class="string">&quot;={}&quot;</span>), <span class="macro-nonterminal">$</span><span class="macro-nonterminal">conditional</span>)
     };
 
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">first_conditional</span>:<span class="ident">ident</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">conditional</span>:<span class="ident">ident</span>),<span class="kw-2">*</span>) <span class="op">=</span><span class="op">&gt;</span> {{
-        <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">std</span>))]</span>
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">first_conditional</span>:<span class="ident">ident</span>, $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">conditional</span>:<span class="ident">ident</span>),<span class="kw-2">*</span>) <span class="op">=&gt;</span> {{
+        <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>))]</span>
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">alloc</span>::<span class="ident">string</span>::<span class="ident">String</span>::<span class="ident">new</span>();
-        <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">std</span>)]</span>
+        <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">s</span> <span class="op">=</span> <span class="ident">String</span>::<span class="ident">new</span>();
         <span class="ident">s</span>.<span class="ident">push_str</span>(<span class="kw-2">&amp;</span><span class="macro">format_conditional</span><span class="macro">!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">first_conditional</span>));
         $(<span class="ident">s</span>.<span class="ident">push_str</span>(<span class="kw-2">&amp;</span><span class="macro">format</span><span class="macro">!</span>(<span class="macro">concat</span><span class="macro">!</span>(<span class="string">&quot;, &quot;</span>, <span class="macro">stringify</span><span class="macro">!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">conditional</span>), <span class="string">&quot;={}&quot;</span>), <span class="macro-nonterminal">$</span><span class="macro-nonterminal">conditional</span>));)<span class="op">*</span>
@@ -848,13 +883,13 @@
 }
 
 <span class="doccomment">/// Panic if the value is not in range.</span>
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">panicking_api</span>)]</span>
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;panicking-api&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">docs</span>, <span class="ident">doc</span>(<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;panicking-api&quot;</span>)))]</span>
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">assert_value_in_range</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>:<span class="ident">ident</span> <span class="kw">in</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span>:<span class="ident">expr</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span>:<span class="ident">expr</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>:<span class="ident">ident</span> <span class="kw">in</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span>:<span class="ident">expr</span> <span class="op">=&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span>:<span class="ident">expr</span>) <span class="op">=&gt;</span> {
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_comparisons</span>)]</span>
         {
-            <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span> <span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span> <span class="op">|</span><span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span> <span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span> {
+            <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span> <span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span> <span class="op">||</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span> <span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span> {
                 <span class="macro">panic</span><span class="macro">!</span>(
                     <span class="macro">concat</span><span class="macro">!</span>(<span class="macro">stringify</span><span class="macro">!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>), <span class="string">&quot; must be in the range {}..={} (was {})&quot;</span>),
                     <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span>,
@@ -865,10 +900,10 @@
         }
     };
 
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>:<span class="ident">ident</span> <span class="kw">in</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span>:<span class="ident">expr</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span>:<span class="ident">expr</span>, <span class="ident">given</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">conditional</span>:<span class="ident">ident</span>),<span class="op">+</span> $(,)<span class="question-mark">?</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>:<span class="ident">ident</span> <span class="kw">in</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span>:<span class="ident">expr</span> <span class="op">=&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span>:<span class="ident">expr</span>, <span class="ident">given</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">conditional</span>:<span class="ident">ident</span>),<span class="op">+</span> $(,)<span class="question-mark">?</span>) <span class="op">=&gt;</span> {
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_comparisons</span>)]</span>
         {
-            <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span> <span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span> <span class="op">|</span><span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span> <span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span> {
+            <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span> <span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span> <span class="op">||</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span> <span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span> {
                 <span class="macro">panic</span><span class="macro">!</span>(
                     <span class="macro">concat</span><span class="macro">!</span>(<span class="macro">stringify</span><span class="macro">!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>), <span class="string">&quot; must be in the range {}..={} given{} (was {})&quot;</span>),
                     <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span>,
@@ -884,10 +919,10 @@
 <span class="comment">// TODO Some of the formatting can likely be performed at compile-time.</span>
 <span class="doccomment">/// Returns `None` if the value is not in range.</span>
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">ensure_value_in_range</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>:<span class="ident">ident</span> <span class="kw">in</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span>:<span class="ident">expr</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span>:<span class="ident">expr</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>:<span class="ident">ident</span> <span class="kw">in</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span>:<span class="ident">expr</span> <span class="op">=&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span>:<span class="ident">expr</span>) <span class="op">=&gt;</span> {
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_comparisons</span>)]</span>
         {
-            <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span> <span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span> <span class="op">|</span><span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span> <span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span> {
+            <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span> <span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span> <span class="op">||</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span> <span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span> {
                 <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ComponentRangeError</span> {
                     <span class="ident">name</span>: <span class="macro">stringify</span><span class="macro">!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>),
                     <span class="ident">minimum</span>: <span class="ident">i64</span>::<span class="ident">from</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span>),
@@ -899,10 +934,10 @@
         }
     };
 
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>:<span class="ident">ident</span> <span class="kw">in</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span>:<span class="ident">expr</span> <span class="op">=</span><span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span>:<span class="ident">expr</span>, <span class="ident">given</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">conditional</span>:<span class="ident">ident</span>),<span class="op">+</span> $(,)<span class="question-mark">?</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>:<span class="ident">ident</span> <span class="kw">in</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span>:<span class="ident">expr</span> <span class="op">=&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span>:<span class="ident">expr</span>, <span class="ident">given</span> $(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">conditional</span>:<span class="ident">ident</span>),<span class="op">+</span> $(,)<span class="question-mark">?</span>) <span class="op">=&gt;</span> {
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">unused_comparisons</span>)]</span>
         {
-            <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span> <span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span> <span class="op">|</span><span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span> <span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span> {
+            <span class="kw">if</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span> <span class="op">&lt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span> <span class="op">||</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span> <span class="op">&gt;</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">end</span> {
                 <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">ComponentRangeError</span> {
                     <span class="ident">name</span>: <span class="macro">stringify</span><span class="macro">!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">value</span>),
                     <span class="ident">minimum</span>: <span class="ident">i64</span>::<span class="ident">from</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">start</span>),
@@ -915,12 +950,12 @@
     };
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">test</span>, <span class="ident">std</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">test</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>))]</span>
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">assert_panics</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">e</span>:<span class="ident">expr</span> $(, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">message</span>:<span class="ident">literal</span>)<span class="question-mark">?</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">e</span>:<span class="ident">expr</span> $(, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">message</span>:<span class="ident">literal</span>)<span class="question-mark">?</span>) <span class="op">=&gt;</span> {
         <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">box_pointers</span>)]</span>
         {
-            <span class="kw">if</span> <span class="ident">std</span>::<span class="ident">panic</span>::<span class="ident">catch_unwind</span>(<span class="kw">move</span> <span class="op">|</span><span class="op">|</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">e</span>).<span class="ident">is_ok</span>() {
+            <span class="kw">if</span> <span class="ident">std</span>::<span class="ident">panic</span>::<span class="ident">catch_unwind</span>(<span class="kw">move</span> <span class="op">||</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">e</span>).<span class="ident">is_ok</span>() {
                 <span class="macro">panic</span><span class="macro">!</span>(<span class="macro">concat</span><span class="macro">!</span>(
                     <span class="string">&quot;assertion failed: expected `&quot;</span>,
                     <span class="macro">stringify</span><span class="macro">!</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">e</span>),
@@ -935,13 +970,13 @@
 <span class="doccomment">/// A macro to generate `Time`s at runtime, usable for tests.</span>
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">time</span> {
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>:<span class="ident">literal</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>:<span class="ident">literal</span>) <span class="op">=&gt;</span> {
         <span class="kw">crate</span>::<span class="ident">Time</span>::<span class="ident">try_from_hms</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>, <span class="number">0</span>)<span class="question-mark">?</span>
     };
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">second</span>:<span class="ident">literal</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">second</span>:<span class="ident">literal</span>) <span class="op">=&gt;</span> {
         <span class="kw">crate</span>::<span class="ident">Time</span>::<span class="ident">try_from_hms</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">second</span>)<span class="question-mark">?</span>
     };
-    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">second</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">nanosecond</span>:<span class="ident">literal</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    (<span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">second</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">nanosecond</span>:<span class="ident">literal</span>) <span class="op">=&gt;</span> {
         <span class="kw">crate</span>::<span class="ident">Time</span>::<span class="ident">try_from_hms_nano</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">second</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">nanosecond</span>)<span class="question-mark">?</span>
     };
 }
@@ -950,22 +985,22 @@
 <span class="doccomment">/// tests.</span>
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">offset</span> {
-    (<span class="ident">UTC</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    (<span class="ident">UTC</span>) <span class="op">=&gt;</span> {
         <span class="kw">crate</span>::<span class="ident">UtcOffset</span>::<span class="ident">UTC</span>
     };
-    ($(<span class="op">+</span>)<span class="question-mark">?</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>:<span class="ident">literal</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    ($(<span class="op">+</span>)<span class="question-mark">?</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>:<span class="ident">literal</span>) <span class="op">=&gt;</span> {
         <span class="kw">crate</span>::<span class="ident">UtcOffset</span>::<span class="ident">hours</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>)
     };
-    (<span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>:<span class="ident">literal</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    (<span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>:<span class="ident">literal</span>) <span class="op">=&gt;</span> {
         <span class="kw">crate</span>::<span class="ident">UtcOffset</span>::<span class="ident">minutes</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span> <span class="op">*</span> <span class="number">60</span> <span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>)
     };
-    (<span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">second</span>:<span class="ident">literal</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    (<span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">second</span>:<span class="ident">literal</span>) <span class="op">=&gt;</span> {
         <span class="kw">crate</span>::<span class="ident">UtcOffset</span>::<span class="ident">seconds</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span> <span class="op">*</span> <span class="number">3_600</span> <span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span> <span class="op">*</span> <span class="number">60</span> <span class="op">+</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">second</span>)
     };
-    (<span class="op">-</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>:<span class="ident">literal</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    (<span class="op">-</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>:<span class="ident">literal</span>) <span class="op">=&gt;</span> {
         <span class="kw">crate</span>::<span class="ident">UtcOffset</span>::<span class="ident">minutes</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span> <span class="op">*</span> <span class="op">-</span><span class="number">60</span> <span class="op">-</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>)
     };
-    (<span class="op">-</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">second</span>:<span class="ident">literal</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    (<span class="op">-</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span>:<span class="ident">literal</span> : <span class="macro-nonterminal">$</span><span class="macro-nonterminal">second</span>:<span class="ident">literal</span>) <span class="op">=&gt;</span> {
         <span class="kw">crate</span>::<span class="ident">UtcOffset</span>::<span class="ident">seconds</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">hour</span> <span class="op">*</span> <span class="op">-</span><span class="number">3_600</span> <span class="op">-</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">minute</span> <span class="op">*</span> <span class="number">60</span> <span class="op">-</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">second</span>)
     };
 }
@@ -973,10 +1008,10 @@
 <span class="doccomment">/// A macro to generate `Date`s at runtime, usable for tests.</span>
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
 <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">date</span> {
-    ($(<span class="op">+</span>)<span class="question-mark">?</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">year</span>:<span class="ident">literal</span> <span class="op">-</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ordinal</span>:<span class="ident">literal</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    ($(<span class="op">+</span>)<span class="question-mark">?</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">year</span>:<span class="ident">literal</span> <span class="op">-</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ordinal</span>:<span class="ident">literal</span>) <span class="op">=&gt;</span> {
         <span class="kw">crate</span>::<span class="ident">Date</span>::<span class="ident">try_from_yo</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">year</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ordinal</span>)<span class="question-mark">?</span>
     };
-    ($(<span class="op">+</span>)<span class="question-mark">?</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">year</span>:<span class="ident">literal</span> <span class="op">-</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">month</span>:<span class="ident">literal</span> <span class="op">-</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">day</span>:<span class="ident">literal</span>) <span class="op">=</span><span class="op">&gt;</span> {
+    ($(<span class="op">+</span>)<span class="question-mark">?</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">year</span>:<span class="ident">literal</span> <span class="op">-</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">month</span>:<span class="ident">literal</span> <span class="op">-</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">day</span>:<span class="ident">literal</span>) <span class="op">=&gt;</span> {
         <span class="kw">crate</span>::<span class="ident">Date</span>::<span class="ident">try_from_ymd</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">year</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">month</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">day</span>)<span class="question-mark">?</span>
     };
 }
@@ -989,7 +1024,7 @@
 <span class="kw">mod</span> <span class="ident">error</span>;
 <span class="kw">mod</span> <span class="ident">format</span>;
 <span class="doccomment">/// The `Instant` struct and its associated `impl`s.</span>
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">std</span>)]</span>
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
 <span class="kw">mod</span> <span class="ident">instant</span>;
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">internals</span>;
 <span class="doccomment">/// A collection of traits extending built-in numerical types.</span>
@@ -998,9 +1033,9 @@
 <span class="kw">mod</span> <span class="ident">offset_date_time</span>;
 <span class="doccomment">/// The `PrimitiveDateTime` struct and its associated `impl`s.</span>
 <span class="kw">mod</span> <span class="ident">primitive_date_time</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">rand</span>)]</span>
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;rand&quot;</span>)]</span>
 <span class="kw">mod</span> <span class="ident">rand</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">serde</span>)]</span>
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">missing_copy_implementations</span>, <span class="ident">missing_debug_implementations</span>)]</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">serde</span>;
 <span class="doccomment">/// The `Sign` struct and its associated `impl`s.</span>
@@ -1017,7 +1052,7 @@
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">error</span>::{<span class="ident">ComponentRangeError</span>, <span class="ident">ConversionRangeError</span>, <span class="ident">Error</span>, <span class="ident">IndeterminateOffsetError</span>};
 <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident">format</span>::<span class="ident">DeferredFormat</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">format</span>::{<span class="ident">validate_format_string</span>, <span class="ident">Format</span>, <span class="ident">ParseError</span>};
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">std</span>)]</span>
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">instant</span>::<span class="ident">Instant</span>;
 <span class="kw">use</span> <span class="ident">internal_prelude</span>::<span class="kw-2">*</span>;
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">numerical_traits</span>::{<span class="ident">NumericalDuration</span>, <span class="ident">NumericalStdDuration</span>, <span class="ident">NumericalStdDurationShort</span>};
@@ -1110,9 +1145,9 @@
 <span class="doccomment">/// major releases.</span>
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">prelude</span> {
     <span class="comment">// Rename traits to `_` if possible to avoid any potential name conflicts.</span>
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">use_trait_as_underscore</span>))]</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">__time_02_use_trait_as_underscore</span>))]</span>
     <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">NumericalDuration</span>, <span class="ident">NumericalStdDuration</span>};
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">use_trait_as_underscore</span>)]</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">__time_02_use_trait_as_underscore</span>)]</span>
     <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">NumericalDuration</span> <span class="kw">as</span> <span class="kw">_</span>, <span class="ident">NumericalStdDuration</span> <span class="kw">as</span> <span class="kw">_</span>};
     <span class="comment">// We need to re-export from the macros crate again (and not just do</span>
     <span class="comment">// `crate::foo`) because of the way name resolution works in Rust. It&#39;s not</span>
@@ -1128,10 +1163,10 @@
 <span class="kw">mod</span> <span class="ident">internal_prelude</span> {
     <span class="attribute">#![<span class="ident">allow</span>(<span class="ident">unused_imports</span>)]</span>
 
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">std</span>))]</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>))]</span>
     <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">alloc</span>;
 
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">std</span>)]</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">Instant</span>;
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="kw">crate</span>::{
         <span class="ident">format</span>::{<span class="ident">ParseError</span>, <span class="ident">ParseResult</span>},
@@ -1140,7 +1175,7 @@
         <span class="ident">PrimitiveDateTime</span>, <span class="ident">Time</span>, <span class="ident">UtcOffset</span>,
         <span class="ident">Weekday</span>::{<span class="self">self</span>, <span class="ident">Friday</span>, <span class="ident">Monday</span>, <span class="ident">Saturday</span>, <span class="ident">Sunday</span>, <span class="ident">Thursday</span>, <span class="ident">Tuesday</span>, <span class="ident">Wednesday</span>},
     };
-    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">std</span>))]</span>
+    <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>))]</span>
     <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">use</span> <span class="ident">alloc</span>::{
         <span class="ident">borrow</span>::<span class="ident">ToOwned</span>,
         <span class="ident">boxed</span>::<span class="ident">Box</span>,
@@ -1160,10 +1195,10 @@
     <span class="kw">use</span> <span class="kw">super</span>::<span class="kw-2">*</span>;
 
     <span class="macro">macro_rules</span><span class="macro">!</span> <span class="ident">parsable</span> {
-        ($(<span class="macro-nonterminal">$</span><span class="kw">type</span>:<span class="macro-nonterminal">ty</span>),<span class="op">*</span> $(,)<span class="question-mark">?</span>) <span class="op">=</span><span class="op">&gt;</span> {
+        ($(<span class="macro-nonterminal">$</span><span class="kw">type</span>:<span class="macro-nonterminal">ty</span>),<span class="op">*</span> $(,)<span class="question-mark">?</span>) <span class="op">=&gt;</span> {
             $(
                 <span class="kw">impl</span> <span class="ident">Parsable</span> <span class="kw">for</span> <span class="macro-nonterminal">$</span><span class="kw">type</span> {
-                    <span class="kw">fn</span> <span class="macro-nonterminal">parse</span>(<span class="ident">s</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">format</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ParseResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
+                    <span class="kw">fn</span> <span class="macro-nonterminal">parse</span>(<span class="ident">s</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">format</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">ParseResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span> {
                         <span class="self">Self</span>::<span class="ident">parse</span>(<span class="ident">s</span>, <span class="ident">format</span>)
                     }
                 }
@@ -1172,7 +1207,7 @@
     }
 
     <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">Parsable</span>: <span class="ident">Sized</span> {
-        <span class="kw">fn</span> <span class="ident">parse</span>(<span class="ident">s</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">format</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ParseResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
+        <span class="kw">fn</span> <span class="ident">parse</span>(<span class="ident">s</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">format</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">ParseResult</span><span class="op">&lt;</span><span class="self">Self</span><span class="op">&gt;</span>;
     }
 
     <span class="macro">parsable</span><span class="macro">!</span>[<span class="ident">Time</span>, <span class="ident">Date</span>, <span class="ident">UtcOffset</span>, <span class="ident">PrimitiveDateTime</span>, <span class="ident">OffsetDateTime</span>];
@@ -1197,26 +1232,26 @@
 <span class="doccomment">/// }</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">private</span>::<span class="ident">Parsable</span><span class="op">&gt;</span>(<span class="ident">s</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">format</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">ParseResult</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">parse</span><span class="op">&lt;</span><span class="ident">T</span>: <span class="ident">private</span>::<span class="ident">Parsable</span><span class="op">&gt;</span>(<span class="ident">s</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>, <span class="ident">format</span>: <span class="kw">impl</span> <span class="ident">AsRef</span><span class="op">&lt;</span><span class="ident">str</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">ParseResult</span><span class="op">&lt;</span><span class="ident">T</span><span class="op">&gt;</span> {
     <span class="ident">private</span>::<span class="ident">Parsable</span>::<span class="ident">parse</span>(<span class="ident">s</span>, <span class="ident">format</span>)
 }
 
 <span class="comment">// For some back-compatibility, we&#39;re also implementing some deprecated types</span>
 <span class="comment">// and methods. They will be removed completely in 0.3.</span>
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">std</span>, <span class="ident">v01_deprecated_api</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;deprecated&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">tarpaulin</span>, <span class="ident">skip</span>)]</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy</span>::<span class="ident">missing_docs_in_private_items</span>)]</span>
 <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;0.2.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Use `Instant`&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">PreciseTime</span> <span class="op">=</span> <span class="ident">Instant</span>;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">std</span>, <span class="ident">v01_deprecated_api</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;deprecated&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">tarpaulin</span>, <span class="ident">skip</span>)]</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy</span>::<span class="ident">missing_docs_in_private_items</span>)]</span>
 <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;0.2.0&quot;</span>, <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;Use `Instant`&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">SteadyTime</span> <span class="op">=</span> <span class="ident">Instant</span>;
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">std</span>, <span class="ident">v01_deprecated_api</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;deprecated&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">tarpaulin</span>, <span class="ident">skip</span>)]</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy</span>::<span class="ident">missing_docs_in_private_items</span>)]</span>
 <span class="attribute">#[<span class="ident">deprecated</span>(
@@ -1225,7 +1260,7 @@
             a known epoch.&quot;</span>
 )]</span>
 <span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">precise_time_ns</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">u64</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">precise_time_ns</span>() <span class="op">-&gt;</span> <span class="ident">u64</span> {
     <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">time</span>::<span class="ident">SystemTime</span>;
 
     (<span class="ident">SystemTime</span>::<span class="ident">now</span>().<span class="ident">duration_since</span>(<span class="ident">SystemTime</span>::<span class="ident">UNIX_EPOCH</span>))
@@ -1235,7 +1270,7 @@
         .<span class="ident">expect</span>(<span class="string">&quot;This function will be removed long before this is an issue.&quot;</span>)
 }
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">std</span>, <span class="ident">v01_deprecated_api</span>))]</span>
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>, <span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;deprecated&quot;</span>))]</span>
 <span class="attribute">#[<span class="ident">cfg_attr</span>(<span class="ident">tarpaulin</span>, <span class="ident">skip</span>)]</span>
 <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy</span>::<span class="ident">missing_docs_in_private_items</span>)]</span>
 <span class="attribute">#[<span class="ident">deprecated</span>(
@@ -1244,7 +1279,7 @@
             a known epoch.&quot;</span>
 )]</span>
 <span class="attribute">#[<span class="ident">inline</span>]</span>
-<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">precise_time_s</span>() <span class="op">-</span><span class="op">&gt;</span> <span class="ident">f64</span> {
+<span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">precise_time_s</span>() <span class="op">-&gt;</span> <span class="ident">f64</span> {
     <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">time</span>::<span class="ident">SystemTime</span>;
 
     (<span class="ident">SystemTime</span>::<span class="ident">now</span>().<span class="ident">duration_since</span>(<span class="ident">SystemTime</span>::<span class="ident">UNIX_EPOCH</span>))
