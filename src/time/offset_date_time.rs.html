@@ -1987,11 +1987,31 @@
 <span id="1986">1986</span>
 <span id="1987">1987</span>
 <span id="1988">1988</span>
+<span id="1989">1989</span>
+<span id="1990">1990</span>
+<span id="1991">1991</span>
+<span id="1992">1992</span>
+<span id="1993">1993</span>
+<span id="1994">1994</span>
+<span id="1995">1995</span>
+<span id="1996">1996</span>
+<span id="1997">1997</span>
+<span id="1998">1998</span>
+<span id="1999">1999</span>
+<span id="2000">2000</span>
+<span id="2001">2001</span>
+<span id="2002">2002</span>
+<span id="2003">2003</span>
+<span id="2004">2004</span>
+<span id="2005">2005</span>
+<span id="2006">2006</span>
+<span id="2007">2007</span>
+<span id="2008">2008</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::{
     <span class="ident">format</span>::<span class="ident">parse</span>::{<span class="ident">parse</span>, <span class="ident">ParsedItems</span>},
     <span class="ident">internal_prelude</span>::<span class="kw-2">*</span>,
-    <span class="ident">Format</span>,
+    <span class="ident">internals</span>, <span class="ident">Format</span>,
 };
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;std&quot;</span>)]</span>
 <span class="kw">use</span> <span class="ident">core</span>::<span class="ident">convert</span>::<span class="ident">From</span>;
@@ -2017,9 +2037,9 @@
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>, <span class="ident">Eq</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">OffsetDateTime</span> {
     <span class="doccomment">/// The `PrimitiveDateTime`, which is _always_ UTC.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">utc_datetime</span>: <span class="ident">PrimitiveDateTime</span>,
+    <span class="ident">utc_datetime</span>: <span class="ident">PrimitiveDateTime</span>,
     <span class="doccomment">/// The `UtcOffset`, which will be added to the `PrimitiveDateTime` as necessary.</span>
-    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="ident">offset</span>: <span class="ident">UtcOffset</span>,
+    <span class="ident">offset</span>: <span class="ident">UtcOffset</span>,
 }
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;serde&quot;</span>)]</span>
@@ -2036,6 +2056,29 @@
 }
 
 <span class="kw">impl</span> <span class="ident">OffsetDateTime</span> {
+    <span class="doccomment">/// Create a new `OffsetDateTime` from the provided `PrimitiveDateTime` and</span>
+    <span class="doccomment">/// `UtcOffset`. The `PrimitiveDateTime` is assumed to be in the provided</span>
+    <span class="doccomment">/// offset.</span>
+    <span class="comment">// TODO Should this be made public?</span>
+    <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">fn</span> <span class="ident">new_assuming_offset</span>(<span class="ident">utc_datetime</span>: <span class="ident">PrimitiveDateTime</span>, <span class="ident">offset</span>: <span class="ident">UtcOffset</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+        <span class="self">Self</span> {
+            <span class="ident">utc_datetime</span>: <span class="ident">utc_datetime</span> <span class="op">-</span> <span class="ident">offset</span>.<span class="ident">as_duration</span>(),
+            <span class="ident">offset</span>,
+        }
+    }
+
+    <span class="doccomment">/// Create a new `OffsetDateTime` from the provided `PrimitiveDateTime` and</span>
+    <span class="doccomment">/// `UtcOffset`. The `PrimitiveDateTime` is assumed to be in UTC.</span>
+    <span class="comment">// TODO Should this be made public?</span>
+    <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
+    <span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">new_assuming_utc</span>(<span class="ident">utc_datetime</span>: <span class="ident">PrimitiveDateTime</span>) <span class="op">-&gt;</span> <span class="self">Self</span> {
+        <span class="self">Self</span> {
+            <span class="ident">utc_datetime</span>,
+            <span class="ident">offset</span>: <span class="ident">UtcOffset</span>::<span class="ident">UTC</span>,
+        }
+    }
+
     <span class="doccomment">/// Create a new `OffsetDateTime` with the current date and time in UTC.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ```rust</span>
@@ -2147,12 +2190,9 @@
     <span class="doccomment">/// ```</span>
     <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">unix_epoch</span>() <span class="op">-&gt;</span> <span class="self">Self</span> {
-        <span class="ident">Date</span> {
-            <span class="ident">year</span>: <span class="number">1970</span>,
-            <span class="ident">ordinal</span>: <span class="number">1</span>,
-        }
-        .<span class="ident">midnight</span>()
-        .<span class="ident">assume_utc</span>()
+        <span class="ident">internals</span>::<span class="ident">Date</span>::<span class="ident">from_yo_unchecked</span>(<span class="number">1970</span>, <span class="number">1</span>)
+            .<span class="ident">midnight</span>()
+            .<span class="ident">assume_utc</span>()
     }
 
     <span class="doccomment">/// Create an `OffsetDateTime` from the provided [Unix timestamp](https://en.wikipedia.org/wiki/Unix_time).</span>

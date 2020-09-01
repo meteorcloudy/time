@@ -81,6 +81,8 @@
 <span id="80">80</span>
 <span id="81">81</span>
 <span id="82">82</span>
+<span id="83">83</span>
+<span id="84">84</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! This module and its contents are not subject to stability guarantees and</span>
 <span class="doccomment">//! should not be relied upon.</span>
@@ -123,7 +125,9 @@
     <span class="comment">// macros</span>
     <span class="attribute">#[<span class="ident">inline</span>(<span class="ident">always</span>)]</span>
     <span class="kw">pub</span> <span class="kw">const</span> <span class="kw">fn</span> <span class="ident">from_yo_unchecked</span>(<span class="ident">year</span>: <span class="ident">i32</span>, <span class="ident">ordinal</span>: <span class="ident">u16</span>) <span class="op">-&gt;</span> <span class="kw">crate</span>::<span class="ident">Date</span> {
-        <span class="kw">crate</span>::<span class="ident">Date</span> { <span class="ident">year</span>, <span class="ident">ordinal</span> }
+        <span class="kw">crate</span>::<span class="ident">Date</span> {
+            <span class="ident">value</span>: (<span class="ident">year</span> <span class="op">&lt;&lt;</span> <span class="number">9</span>) <span class="op">|</span> <span class="ident">ordinal</span> <span class="kw">as</span> <span class="ident">i32</span>,
+        }
     }
 
     <span class="comment">// reduce duplication</span>
@@ -136,11 +140,11 @@
             [<span class="number">0</span>, <span class="number">31</span>, <span class="number">60</span>, <span class="number">91</span>, <span class="number">121</span>, <span class="number">152</span>, <span class="number">182</span>, <span class="number">213</span>, <span class="number">244</span>, <span class="number">274</span>, <span class="number">305</span>, <span class="number">335</span>],
         ];
 
-        <span class="kw">crate</span>::<span class="ident">Date</span> {
+        <span class="ident">Date</span>::<span class="ident">from_yo_unchecked</span>(
             <span class="ident">year</span>,
-            <span class="ident">ordinal</span>: <span class="ident">DAYS_CUMULATIVE_COMMON_LEAP</span>[<span class="ident">is_leap_year</span>(<span class="ident">year</span>) <span class="kw">as</span> <span class="ident">usize</span>][<span class="ident">month</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="op">-</span> <span class="number">1</span>]
+            <span class="ident">DAYS_CUMULATIVE_COMMON_LEAP</span>[<span class="ident">is_leap_year</span>(<span class="ident">year</span>) <span class="kw">as</span> <span class="ident">usize</span>][<span class="ident">month</span> <span class="kw">as</span> <span class="ident">usize</span> <span class="op">-</span> <span class="number">1</span>]
                 <span class="op">+</span> <span class="ident">day</span> <span class="kw">as</span> <span class="ident">u16</span>,
-        }
+        )
     }
 
     <span class="comment">// reduce duplication</span>
